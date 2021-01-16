@@ -30,14 +30,23 @@ class data_process:
 
     #     def int_to_str(self, col):
     #         self.data[col] = self.data[col].astype('str')
+    
+    def str_to_int(self, col):
+        # a = public holiday, b = Easter holiday, c = Christmas, 0 = None
+        self.data[col] = self.data[col].map(lambda x: 1 if x=='a' else 2 if x=='b' else 3 if x=='c' else 0)
 
     def convert_dtype(self):
         catcolumns = self.data.select_dtypes(include=['object']).columns.tolist()
         return pd.get_dummies(self.data, columns=catcolumns)
+    
+    
 
     def pivot_table(self, index, aggfunc):
         return pd.pivot_table(self.data, index=index, aggfunc=aggfunc)
 
+    
+    
+    
 
 class Sales_EDA:
     def __init__(self, data):
@@ -98,6 +107,8 @@ class Sales_EDA:
         plt.show()
 
 
+        
+        
 class sumby:
     def __init__(self, data, groupbycol, aggcol):
         self.data = data
@@ -209,7 +220,11 @@ class individual_store:
                                    f'Ranking in {assortmenttype.upper()} Assortment'],
                             columns=['Detail'])
 
+    
+    
 
+    
+    
 class combined_storedata:
     def __init__(self, data1, data2):
         self.data1 = data1
@@ -219,20 +234,27 @@ class combined_storedata:
         return self.data2
 
     def process_data1(self):
+        # change the index of data1 from storeid to number
         self.data1 = self.data1.reset_index()
-        # self.data1.Store = self.data1.Store.astype('int')
+        # sort store id in ascending order
         self.data1 = self.data1.sort_values('Store').reset_index(drop=True)
         return self.data1
 
     def process_data2(self):
+        # drop duplcated column Store
         self.data2 = self.data2.drop('Store', axis=1)
         return self.data2
 
     def concatdf(self):
+        # combine two data set 
         storedata = pd.concat([self.process_data1(), self.process_data2()], axis=1)
         return storedata
 
 
+    
+    
+    
+    
 class combined_store_EDA:
     def __init__(self, data):
         self.data = data
