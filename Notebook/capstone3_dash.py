@@ -94,7 +94,7 @@ app.layout = dbc.Container([
      dbc.Row([
 
         dbc.Col([
-            html.P("Check Top 10 Sales of StoreType:",
+            html.P("Check Top 10 Average Daily Sales of 4 StoreTypes:",
                    style={"textDecoration": "underline"}),
             dcc.Dropdown(id='my-dpdn5', multi=False, value='',
                           options=[{'label':x, 'value':x}
@@ -107,13 +107,13 @@ app.layout = dbc.Container([
 
 
         dbc.Col([
-            html.P("Check Store Daily Sales Histogram:",
+            html.P("Check Top 10 Spend  Per Customer of 4 StoreTypes:",
                    style={"textDecoration": "underline"}),
-            dcc.Dropdown(id='my-checklist', multi=True, value='',
+            dcc.Dropdown(id='my-dpdn6', multi=False, value='',
                           options=[{'label':x, 'value':x}
-                                   for x in sorted(df['Store'].unique())],
+                                   for x in sorted(sdf['StoreType'].unique())],
                          ),
-            dcc.Graph(id='my-hist', figure={}),
+            dcc.Graph(id='bar-fig2', figure={}),
         ], width={'size':5, 'offset':1},
            xs=12, sm=12, md=12, lg=5, xl=5
         )
@@ -180,24 +180,39 @@ def update_graph(storeid):
     Input('my-dpdn5', 'value')
 )
 def update_graph(storetype):
-    sdff = sdf[sdf['StoreType']==storetype].sort_values('Sales', ascending=False).nlargest(10, 'Sales')
+    sdff = sdf[sdf['StoreType']==storetype].sort_values('AverageDailySales', ascending=False).nlargest(10, 'AverageDailySales')
     #figln5 = go.Figure(go.Bar(x=sdff['Sales'], y=sdff['Store'].values.astype('str'),  orientation='h'))
-    figbar1 = px.bar(x=sdff['Sales'], y=sdff['Store'].values.astype('str'),
-                     labels={'y':'Store ID', 'x':'Total Sales'},  orientation='h')
+    figbar1 = px.bar(x=sdff['AverageDailySales'], y=sdff['Store'].values.astype('str'),
+                     color=sdff['Store'],
+                     labels={'y':'Store ID', 'x':'Average Daily Sales'},  orientation='h')
     return figbar1
 
 
 
-# Histogram
 @app.callback(
-    Output('my-hist', 'figure'),
-    Input('my-checklist', 'value')
+    Output('bar-fig2', 'figure'),
+    Input('my-dpdn6', 'value')
 )
-def update_graph(storeid):
-    dff = df[df['Store'].isin(storeid)]
-    #dff = dff[dff['Store']==storeid]
-    fighist = px.histogram(dff, x='Sales', nbins=10)
-    return fighist
+def update_graph(storetype):
+    sdff = sdf[sdf['StoreType']==storetype].sort_values('SalesPerCustomer', ascending=False).nlargest(10, 'SalesPerCustomer')
+    #figln5 = go.Figure(go.Bar(x=sdff['Sales'], y=sdff['Store'].values.astype('str'),  orientation='h'))
+    figbar2 = px.bar(x=sdff['SalesPerCustomer'], y=sdff['Store'].values.astype('str'),
+                     color=sdff['Store'],
+                     labels={'y':'Store ID', 'x':'Spend Per Customer'},  orientation='h')
+    return figbar2
+
+
+
+# Histogram
+# @app.callback(
+#     Output('my-hist', 'figure'),
+#     Input('my-checklist', 'value')
+# )
+# def update_graph(storeid):
+#     dff = df[df['Store'].isin(storeid)]
+#     #dff = dff[dff['Store']==storeid]
+#     fighist = px.histogram(dff, x='Sales', nbins=10)
+#     return fighist
 
 
 if __name__=='__main__':
