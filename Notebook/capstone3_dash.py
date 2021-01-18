@@ -36,7 +36,7 @@ app.layout = dbc.Container([
     dbc.Row([
 
         dbc.Col([
-            html.P("Check Store Daily Sales:",
+            html.H5("Store Daily Sales:",
                    style={"textDecoration": "underline"}),
 
     html.Div(
@@ -62,7 +62,7 @@ app.layout = dbc.Container([
         ),
 
         dbc.Col([
-            html.P("Check Store Weekly Sales:",
+            html.H5("Store Weekly Sales:",
                    style={"textDecoration": "underline"}),
 
 
@@ -94,7 +94,7 @@ app.layout = dbc.Container([
     dbc.Row([
 
         dbc.Col([
-            html.P("Check Store Daily Customer:",
+            html.H5("Store Daily Customer:",
                    style={"textDecoration": "underline"}),
 
             html.Div(
@@ -122,7 +122,7 @@ app.layout = dbc.Container([
 
 
         dbc.Col([
-            html.P("Check Store Daily Spend Per Customer",
+            html.H5("Store Daily Spend Per Customer",
                    style={"textDecoration": "underline"}),
 
             html.Div(
@@ -153,7 +153,7 @@ app.layout = dbc.Container([
      dbc.Row([
 
         dbc.Col([
-            html.P("Check Top 10 Average Daily Sales of 4 StoreTypes:",
+            html.H5("Top 10 AverageDailySales by StoreType:",
                    style={"textDecoration": "underline"}),
             dcc.Dropdown(id='my-dpdn5', multi=False, value='',
                           options=[{'label':x, 'value':x}
@@ -166,7 +166,7 @@ app.layout = dbc.Container([
 
 
         dbc.Col([
-            html.P("Check Top 10 Spend  Per Customer of 4 StoreTypes:",
+            html.H5("Top 10 SpendPerCustomer by StoreType:",
                    style={"textDecoration": "underline"}),
             dcc.Dropdown(id='my-dpdn6', multi=False, value='',
                           options=[{'label':x, 'value':x}
@@ -222,9 +222,9 @@ def update_graph(storeid, start_date, end_date):
 )
 def update_graph(storeid, start_date, end_date):
     mask = (df.Store.isin(storeid) & (df.Date >= start_date) & (df.Date <= end_date))
-    dff = df.loc[mask,:].set_index('Date').Sales.resample('w').sum()
-    #dff = df[df['Store'].isin(storeid)].set_index('Date').Sales.resample('w').sum()
-    figln2 = px.line(dff, labels={'value':'Weekly Sales'})
+    dff = df.loc[mask,:].set_index('Date').groupby('Store')['Sales'].resample('w').sum().reset_index().set_index('Date')
+    figln2 = px.line(dff, x=dff.index, y='Sales', color='Store', labels={'Sales':'Weekly Sales'})
+
     return figln2
 
 
