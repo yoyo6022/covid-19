@@ -38,10 +38,24 @@ app.layout = dbc.Container([
         dbc.Col([
             html.P("Check Store Daily Sales:",
                    style={"textDecoration": "underline"}),
+
+    html.Div(
+        children=[
+            html.Div(
+            children=[html.Div(children='Store ID', className='menu-title'),
             dcc.Dropdown(id='my-dpdn', multi=True, value='',
                          options=[{'label':x, 'value':x}
-                                  for x in sorted(df['Store'].unique())],
-                         ),
+                                  for x in sorted(df['Store'].unique())], style={'width': '100%'}
+                         )],),
+            html.Div(
+                children=[html.Div(children='Date', className='menu-title'),
+                    dcc.DatePickerRange(id="date-range",
+                    min_date_allowed=df.Date.min().date(),
+                    max_date_allowed=df.Date.max().date(),
+                    start_date=df.Date.min().date(),
+                    end_date=df.Date.max().date(), style={'width': '100%'})]
+                )], className='menu'),
+
             dcc.Graph(id='line-fig', figure={})
         ], width={'size': 6},
            #xs=12, sm=12, md=12, lg=5, xl=5
@@ -50,6 +64,8 @@ app.layout = dbc.Container([
         dbc.Col([
             html.P("Check Store Weekly Sales:",
                    style={"textDecoration": "underline"}),
+
+
             dcc.Dropdown(id='my-dpdn2', multi=True, value='',
                          options=[{'label':x, 'value':x}
                                   for x in sorted(df['Store'].unique())],
@@ -129,14 +145,29 @@ app.layout = dbc.Container([
 # Callback section: connecting the components
 # ************************************************************************
 # Line chart - multi daily sales
+
+# @app.callback(
+#     Output('line-fig', 'figure'),
+#     Input('my-dpdn', 'value')
+# )
+# def update_graph(storeid):
+#     dff = df[df['Store'].isin(storeid)].set_index('Date')
+#     figln = px.line(dff, x=dff.index, y='Sales', color='Store')
+#     return figln
+
+
 @app.callback(
     Output('line-fig', 'figure'),
-    Input('my-dpdn', 'value')
+    Input('my-dpdn', 'value'),
+    Input('date-range', 'start_date'),
+    Input('date-range', 'end_date'),
 )
-def update_graph(storeid):
-    dff = df[df['Store'].isin(storeid)].set_index('Date')
+def update_graph(storeid, start_date, end_date):
+    mask=(df.Store.isin(storeid) & (df.Date >= start_date) & (df.Date <= end_date))
+    dff = df.loc[mask,:].set_index('Date')
     figln = px.line(dff, x=dff.index, y='Sales', color='Store')
     return figln
+
 
 
 # Line chart - multi weekly sales sum
