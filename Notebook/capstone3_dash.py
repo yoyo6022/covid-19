@@ -51,7 +51,7 @@ app.layout = dbc.Container([
                 children=[html.Div(children='Date', className='menu-title'),
                     dcc.DatePickerRange(id="date-range",
                     min_date_allowed=df.Date.min().date(),
-                    max_date_allowed=df.Date.max().date(),
+                    max_date_allowed=datetime.date(2016, 9, 19),
                     start_date=df.Date.min().date(),
                     end_date=df.Date.max().date(), style={'width': '100%'})]
                 )], className='menu'),
@@ -66,14 +66,28 @@ app.layout = dbc.Container([
                    style={"textDecoration": "underline"}),
 
 
+    html.Div(
+        children=[
+            html.Div(
+            children=[html.Div(children='Store ID', className='menu-title'),
             dcc.Dropdown(id='my-dpdn2', multi=True, value='',
-                         options=[{'label':x, 'value':x}
-                                  for x in sorted(df['Store'].unique())],
-                         ),
-            dcc.Graph(id='line-fig2', figure={})
+                     options=[{'label':x, 'value':x}
+                              for x in sorted(df['Store'].unique())], style={'width': '100%'}
+                         )],),
+        html.Div(
+            children=[html.Div(children='Date', className='menu-title'),
+                dcc.DatePickerRange(id="date-range2",
+                min_date_allowed=df.Date.min().date(),
+                max_date_allowed=datetime.date(2016, 9, 19),
+                start_date=df.Date.min().date(),
+                end_date=df.Date.max().date(), style={'width': '100%'})]
+            )], className='menu'),
+
+        dcc.Graph(id='line-fig2', figure={})
         ], width={'size': 6},
-           #xs=12, sm=12, md=12, lg=5, xl=5
+       #xs=12, sm=12, md=12, lg=5, xl=5
         ),
+
 
     ], no_gutters=False, justify='center'),  # Horizontal:start,center,end,between,around
 
@@ -82,23 +96,52 @@ app.layout = dbc.Container([
         dbc.Col([
             html.P("Check Store Daily Customer:",
                    style={"textDecoration": "underline"}),
-            dcc.Dropdown(id='my-dpdn3', multi=True, value='',
-                          options=[{'label':x, 'value':x}
-                                   for x in sorted(df['Store'].unique())],
-                         ),
-            dcc.Graph(id='line-fig3', figure={}),
+
+            html.Div(
+                children=[
+                    html.Div(
+                        children=[html.Div(children='Store ID', className='menu-title'),
+                                  dcc.Dropdown(id='my-dpdn3', multi=True, value='',
+                                               options=[{'label': x, 'value': x}
+                                                        for x in sorted(df['Store'].unique())], style={'width': '100%'}
+                                               )], ),
+                    html.Div(
+                        children=[html.Div(children='Date', className='menu-title'),
+                                  dcc.DatePickerRange(id="date-range3",
+                                                      min_date_allowed=df.Date.min().date(),
+                                                      max_date_allowed=datetime.date(2016, 9, 19),
+                                                      start_date=df.Date.min().date(),
+                                                      end_date=df.Date.max().date(), style={'width': '100%'})]
+                    )], className='menu'),
+
+            dcc.Graph(id='line-fig3', figure={})
         ], width={'size': 6},
-           #xs=12, sm=12, md=12, lg=5, xl=5
+            # xs=12, sm=12, md=12, lg=5, xl=5
         ),
+
 
 
         dbc.Col([
             html.P("Check Store Daily Spend Per Customer",
                    style={"textDecoration": "underline"}),
-            dcc.Dropdown(id='my-dpdn4', multi=True, value='',
-                          options=[{'label':x, 'value':x}
-                                   for x in sorted(df['Store'].unique())],
-                         ),
+
+            html.Div(
+                children=[
+                    html.Div(
+                        children=[html.Div(children='Store ID', className='menu-title'),
+                                  dcc.Dropdown(id='my-dpdn4', multi=True, value='',
+                                               options=[{'label': x, 'value': x}
+                                                        for x in sorted(df['Store'].unique())], style={'width': '100%'}
+                                               )], ),
+                    html.Div(
+                        children=[html.Div(children='Date', className='menu-title'),
+                                  dcc.DatePickerRange(id="date-range4",
+                                                      min_date_allowed=df.Date.min().date(),
+                                                      max_date_allowed=datetime.date(2016, 9, 19),
+                                                      start_date=df.Date.min().date(),
+                                                      end_date=df.Date.max().date(), style={'width': '100%'})]
+                    )], className='menu'),
+
             dcc.Graph(id='line-fig4', figure={}),
         ], width={'size': 6},
            #xs=12, sm=12, md=12, lg=5, xl=5
@@ -173,11 +216,15 @@ def update_graph(storeid, start_date, end_date):
 # Line chart - multi weekly sales sum
 @app.callback(
     Output('line-fig2', 'figure'),
-    Input('my-dpdn2', 'value')
+    Input('my-dpdn2', 'value'),
+    Input('date-range2', 'start_date'),
+    Input('date-range2', 'end_date'),
 )
-def update_graph(storeid):
-    dff = df[df['Store'].isin(storeid)].set_index('Date').Sales.resample('w').sum()
-    figln2 = px.line(dff)
+def update_graph(storeid, start_date, end_date):
+    mask = (df.Store.isin(storeid) & (df.Date >= start_date) & (df.Date <= end_date))
+    dff = df.loc[mask,:].set_index('Date').Sales.resample('w').sum()
+    #dff = df[df['Store'].isin(storeid)].set_index('Date').Sales.resample('w').sum()
+    figln2 = px.line(dff, labels={'value':'Weekly Sales'})
     return figln2
 
 
@@ -185,10 +232,13 @@ def update_graph(storeid):
 # line chart - customer
 @app.callback(
     Output('line-fig3', 'figure'),
-    Input('my-dpdn3', 'value')
+    Input('my-dpdn3', 'value'),
+    Input('date-range3', 'start_date'),
+    Input('date-range3', 'end_date'),
 )
-def update_graph(storeid):
-    dff = df[df['Store'].isin(storeid)].set_index('Date')
+def update_graph(storeid, start_date, end_date):
+    mask = (df.Store.isin(storeid) & (df.Date >= start_date) & (df.Date <= end_date))
+    dff = df.loc[mask,:].set_index('Date')
     figln3 = px.line(dff, x=dff.index, y='Customers', color='Store')
     return figln3
 
@@ -197,10 +247,13 @@ def update_graph(storeid):
 # line chart - sales per customer
 @app.callback(
     Output('line-fig4', 'figure'),
-    Input('my-dpdn4', 'value')
+    Input('my-dpdn4', 'value'),
+    Input('date-range4', 'start_date'),
+    Input('date-range4', 'end_date'),
 )
-def update_graph(storeid):
-    dff = df[df['Store'].isin(storeid)].set_index('Date')
+def update_graph(storeid, start_date, end_date):
+    mask = (df.Store.isin(storeid) & (df.Date >= start_date) & (df.Date <= end_date))
+    dff = df.loc[mask,:].set_index('Date')
     dff['SalesPerCustomer'] = dff['Sales']/dff['Customers']
     figln4 = px.line(dff, x=dff.index, y='SalesPerCustomer', color='Store')
     return figln4
