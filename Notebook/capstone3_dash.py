@@ -43,8 +43,8 @@ app.layout = dbc.Container([
                                   for x in sorted(df['Store'].unique())],
                          ),
             dcc.Graph(id='line-fig', figure={})
-        ], width={'size':5, 'offset':1, 'order':1},
-           xs=12, sm=12, md=12, lg=5, xl=5
+        ], width={'size': 6},
+           #xs=12, sm=12, md=12, lg=5, xl=5
         ),
 
         dbc.Col([
@@ -55,11 +55,11 @@ app.layout = dbc.Container([
                                   for x in sorted(df['Store'].unique())],
                          ),
             dcc.Graph(id='line-fig2', figure={})
-        ], width={'size':5, 'offset':0, 'order':2},
-           xs=12, sm=12, md=12, lg=5, xl=5
+        ], width={'size': 6},
+           #xs=12, sm=12, md=12, lg=5, xl=5
         ),
 
-    ], no_gutters=False, justify='start'),  # Horizontal:start,center,end,between,around
+    ], no_gutters=False, justify='center'),  # Horizontal:start,center,end,between,around
 
     dbc.Row([
 
@@ -71,8 +71,8 @@ app.layout = dbc.Container([
                                    for x in sorted(df['Store'].unique())],
                          ),
             dcc.Graph(id='line-fig3', figure={}),
-        ], width={'size':5, 'offset':1},
-           xs=12, sm=12, md=12, lg=5, xl=5
+        ], width={'size': 6},
+           #xs=12, sm=12, md=12, lg=5, xl=5
         ),
 
 
@@ -84,12 +84,12 @@ app.layout = dbc.Container([
                                    for x in sorted(df['Store'].unique())],
                          ),
             dcc.Graph(id='line-fig4', figure={}),
-        ], width={'size':5, 'offset':1},
-           xs=12, sm=12, md=12, lg=5, xl=5
+        ], width={'size': 6},
+           #xs=12, sm=12, md=12, lg=5, xl=5
         ),
 
 
-    ], no_gutters=False, justify='start'),  # Vertical: start, center, end
+    ], no_gutters=False, justify='center'),  # Vertical: start, center, end
 
      dbc.Row([
 
@@ -101,8 +101,8 @@ app.layout = dbc.Container([
                                    for x in sorted(sdf['StoreType'].unique())],
                          ),
             dcc.Graph(id='bar-fig1', figure={}),
-        ], width={'size':5, 'offset':1},
-           xs=12, sm=12, md=12, lg=5, xl=5
+        ], width={'size': 6},
+           #xs=12, sm=12, md=12, lg=5, xl=5
         ),
 
 
@@ -114,12 +114,12 @@ app.layout = dbc.Container([
                                    for x in sorted(sdf['StoreType'].unique())],
                          ),
             dcc.Graph(id='bar-fig2', figure={}),
-        ], width={'size':5, 'offset':1},
-           xs=12, sm=12, md=12, lg=5, xl=5
+        ], width={'size': 6},
+           #xs=12, sm=12, md=12, lg=5, xl=5
         )
 
 
-    ], no_gutters=False, justify='start'),
+    ], no_gutters=False, justify='center'),
 
 
 
