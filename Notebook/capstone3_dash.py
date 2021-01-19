@@ -311,8 +311,17 @@ def update_graph(storetype):
     # Input('date-range', 'end_date'),
 )
 def update_graph(storeid):
+    storeweeklysales = df[df.Store == storeid].set_index('Date').resample('w').Sales.sum()
+    previous8w_index = storeweeklysales[-9:-1].index
     webresult = modeling(df, storeid).forecast('2015-07-27', '2015-09-20')
     fig5 = go.Figure([
+        go.Scatter(
+            name='Previous 8 Weeks',
+            x=previous8w_index,
+            y=webresult['Previous 8 Weeks'],
+            mode='lines',
+            line=dict(color='rgb(31, 119, 180)'),
+        ),
         go.Scatter(
             name='Forcast',
             x=webresult.index,
@@ -342,10 +351,10 @@ def update_graph(storeid):
         )
     ])
     fig5.update_layout(
-        width=600,
-        height=400,
+        width=800,
+        height=500,
         yaxis_title='Weekly Sales ',
-        title='Continuous, variable value error bars',
+        #title='Continuous, variable value error bars',
         hovermode="x"
     )
     #fig5.show()
