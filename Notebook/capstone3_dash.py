@@ -323,11 +323,20 @@ def update_graph(storeid):
             line=dict(color='rgb(31, 119, 180)'),
         ),
         go.Scatter(
+            hoverinfo='none',
+            name='',
+            x=[previous8w_index[-1], webresult.index[0]],
+            y=[storeweeklysales[-9:-1].values[-1], webresult['Forecast'][0]],
+            mode='lines',
+            line=dict(color='rgb(31, 119, 180)'),
+            showlegend=False
+        ),
+        go.Scatter(
             name='Forcast',
             x=webresult.index,
             y=webresult['Forecast'],
             mode='lines',
-            line=dict(color='rgb(31, 119, 180)'),
+            line=dict(color='rgb(255,0,0)'),
         ),
         go.Scatter(
             name='Upper Bound',
@@ -351,13 +360,11 @@ def update_graph(storeid):
         )
     ])
     fig5.update_layout(
-        width=800,
+        width=900,
         height=500,
         yaxis_title='Weekly Sales ',
-        #title='Continuous, variable value error bars',
         hovermode="x"
     )
-    #fig5.show()
 
     return fig5
 
