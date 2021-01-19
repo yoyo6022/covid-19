@@ -9,14 +9,20 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 #import pandas_datareader.data as web
+from pmdarima.arima import auto_arima
 import datetime
+import sys
+sys.path.insert(1, '/Users/liuyang/Desktop/Springboard_Capstone3/notebook')
+from modelingclass import modeling
 
 df = pd.read_csv("~/Desktop/Springboard_Capstone3/data/train.csv")
-sdf = pd.read_csv("~/Desktop/Springboard_Capstone3/data/combined_data.csv")
 df.Date=pd.to_datetime(df.Date, format='%Y-%m-%d')
-#print(df[:15])
+sdf = pd.read_csv("~/Desktop/Springboard_Capstone3/data/combined_data.csv")
+
+
 
 # # https://www.bootstrapcdn.com/bootswatch/
+
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],
                 meta_tags=[{'name': 'viewport',
                             'content': 'width=device-width, initial-scale=1.0'}]
@@ -176,10 +182,21 @@ app.layout = dbc.Container([
         ], width={'size': 6},
            #xs=12, sm=12, md=12, lg=5, xl=5
         )
+     ], no_gutters=False, justify='center'),
 
+    dbc.Row([
 
-    ], no_gutters=False, justify='center'),
-
+        dbc.Col([
+            html.H5("Future 8 Weeks Forecasting:",
+                   style={"textDecoration": "underline"}),
+            dcc.Dropdown(id='my-dpdn7', multi=False, value='',
+                          options=[{'label':x, 'value':x}
+                                   for x in sorted(df['Store'].unique())],
+                         ),
+            dcc.Graph(id='line-fig5', figure={}),
+        ], width={'size': 6},
+           #xs=12, sm=12, md=12, lg=5, xl=5
+        )], no_gutters=False, justify='center'),
 
 
 ], fluid=True)
@@ -284,6 +301,57 @@ def update_graph(storetype):
                      color=sdff['Store'],
                      labels={'y':'Store ID', 'x':'Spend Per Customer'},  orientation='h')
     return figbar2
+
+
+
+@app.callback(
+    Output('line-fig5', 'figure'),
+    Input('my-dpdn7', 'value'),
+    # Input('date-range', 'start_date'),
+    # Input('date-range', 'end_date'),
+)
+def update_graph(storeid):
+    webresult = modeling(df, storeid).forecast('2015-07-27', '2015-09-20')
+    fig5 = go.Figure([
+        go.Scatter(
+            name='Forcast',
+            x=webresult.index,
+            y=webresult['Forecast'],
+            mode='lines',
+            line=dict(color='rgb(31, 119, 180)'),
+        ),
+        go.Scatter(
+            name='Upper Bound',
+            x=webresult.index,
+            y=webresult['upper CI'],
+            mode='lines',
+            marker=dict(color="#444"),
+            line=dict(width=0),
+            showlegend=False
+        ),
+        go.Scatter(
+            name='Lower Bound',
+            x=webresult.index,
+            y=webresult['lower CI'],
+            marker=dict(color="#444"),
+            line=dict(width=0),
+            mode='lines',
+            fillcolor='rgba(68, 68, 68, 0.3)',
+            fill='tonexty',
+            showlegend=False
+        )
+    ])
+    fig5.update_layout(
+        width=600,
+        height=400,
+        yaxis_title='Weekly Sales ',
+        title='Continuous, variable value error bars',
+        hovermode="x"
+    )
+    #fig5.show()
+
+    return fig5
+
 
 
 
