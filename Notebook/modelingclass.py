@@ -41,7 +41,7 @@ class modeling:
 
         else:
             train_startdate = self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index[1]
-            if len(self.storeweeklysales.loc[train_startdate:][:-1]) >= 17:
+            if len(self.storeweeklysales.loc[train_startdate:][:-1]) >= 16:
                 train_enddate = len(self.storeweeklysales.loc[train_startdate:]) - 9
                 train = self.storeweeklysales.loc[train_startdate:][:train_enddate]
                 #test = self.storeweeklysales.loc[train_startdate:][train_enddate:-1]
@@ -110,7 +110,7 @@ class modeling:
 
         else:
             train_startdate = self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index[1]
-            if len(self.storeweeklysales.loc[train_startdate:][:-1]) >= 17:
+            if len(self.storeweeklysales.loc[train_startdate:][:-1]) >= 16:
                 train_enddate = len(self.storeweeklysales.loc[train_startdate:]) - 9
                 train = self.storeweeklysales.loc[train_startdate:][:train_enddate]
                 #test = self.storeweeklysales.loc[train_startdate:][train_enddate:-1]
