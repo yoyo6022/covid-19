@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from pmdarima.arima import auto_arima
 from sklearn.metrics import mean_absolute_error
-from sklearn.metrics import r2_score
+#from sklearn.metrics import r2_score
 
 
 class modeling:
@@ -14,7 +14,10 @@ class modeling:
         self.data = data
         self.storeid = storeid
         self.storeweeklysales = self.data.loc[self.data.Store == self.storeid].set_index('Date').resample('w').Sales.sum()
-
+        self.average = np.full((8,), self.storeweeklysales[:-9].mean())
+        self.mae = mean_absolute_error(self.storeweeklysales[-9:-1], self.average)
+        self.WAPE = np.sum(abs(self.average - self.storeweeklysales[-9:-1]))/(self.data.set_index('Date').resample('w').Sales.sum()[-9:-1].sum())
+        
     def forecast(self, start_date, end_date):
         # storeweeklysales = self.data.loc[self.data.Store == self.storeid].set_index('Date').resample('w').Sales.sum()
         # storeweeklysales = storeweeklysales[storeweeklysales!=0]
@@ -98,16 +101,19 @@ class modeling:
             predictresult1 = arima_model.predict(n_periods=8)
             true_values = test.values
             mae = mean_absolute_error(true_values, predictresult1)
-            R2 = r2_score(true_values, predictresult1)
-            return pd.DataFrame([mae, R2], index=['MAE', 'R2'], columns=[self.storeid]).T
+            WAPE = np.sum(abs(predictresult1 - true_values))/(self.data.set_index('Date').resample('w').Sales.sum()[-9:-1].sum())
+            
+            #R2 = r2_score(true_values, predictresult1)
+            return pd.DataFrame([mae, WAPE,  self.mae, self.WAPE], index=['MAE_AutoArima', 'WAPE_AutoArima', 'MAE_MeanMethod','WAPE_MeanMethod'], columns=[self.storeid]).T
             #return pd.DataFrame([mae, R2])
 
         else:
             train_startdate = self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index[1]
-            if len(self.storeweeklysales.loc[train_startdate:]) >= 11:
+            if len(self.storeweeklysales.loc[train_startdate:][:-1]) >= 16:
                 train_enddate = len(self.storeweeklysales.loc[train_startdate:]) - 9
                 train = self.storeweeklysales.loc[train_startdate:][:train_enddate]
-                test = self.storeweeklysales.loc[train_startdate:][train_enddate:-1]
+                #test = self.storeweeklysales.loc[train_startdate:][train_enddate:-1]
+                test = self.storeweeklysales[-9:-1]
 
                 arima_model = auto_arima(train, start_p=0, d=0,
                                          start_q=0,
@@ -122,8 +128,9 @@ class modeling:
                 predictresult = arima_model.predict(n_periods=8)
                 true_values = test.values
                 mae_2 = mean_absolute_error(true_values, predictresult)
-                R2_2 = r2_score(true_values, predictresult)
-                return pd.DataFrame([mae_2, R2_2], index=['MAE', 'R2'], columns=[self.storeid]).T
+                WAPE_2 = np.sum(abs(predictresult - true_values))/(self.data.set_index('Date').resample('w').Sales.sum()[-9:-1].sum())
+                #R2_2 = r2_score(true_values, predictresult)
+                return pd.DataFrame([mae_2, WAPE_2, self. mae, self.WAPE], index=['MAE_AutoArima', 'WAPE_AutoArima', 'MAE_MeanMethod', 'WAPE_MeanMethod'], columns=[self.storeid]).T
                 #return pd.DataFrame([mae_2, R2_2])
 
             else:
@@ -141,7 +148,8 @@ class modeling:
                 predictresult1 = arima_model.predict(n_periods=8)
                 true_values = test.values
                 mae = mean_absolute_error(true_values, predictresult1)
-                R2 = r2_score(true_values, predictresult1)
-                return pd.DataFrame([mae, R2], index=['MAE', 'R2'], columns=[self.storeid]).T
+                WAPE = np.sum(abs(predictresult1 - true_values))/(self.data.set_index('Date').resample('w').Sales.sum()[-9:-1].sum())
+                #R2 = r2_score(true_values, predictresult1)
+                return pd.DataFrame([mae, WAPE, self.mae, self.WAPE], index=['MAE_AutoArima', 'WAPE_AutoArima', 'MAE_MeanMethod', 'WAPE_MeanMethod' ], columns=[self.storeid]).T
                 #return pd.DataFrame([mae, R2])
 
