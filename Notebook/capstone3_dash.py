@@ -362,7 +362,8 @@ def update_graph(storeid):
     fig5.update_layout(
         width=900,
         height=500,
-        yaxis_title='Weekly Sales ',
+        title=f'Store {storeid}',
+        yaxis_title='Weekly Sales',
         hovermode="x"
     )
 
