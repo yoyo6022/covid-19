@@ -33,7 +33,7 @@ class data_process:
     
     def str_to_int(self, col):
         # a = public holiday, b = Easter holiday, c = Christmas, 0 = None
-        self.data[col] = self.data[col].map(lambda x: 1 if x=='a' else 2 if x=='b' else 3 if x=='c' else 0)
+        self.data[col] = self.data[col].map(lambda x: 1 if x in ['a', 'b', 'c'] else 0)
 
     def convert_dtype(self):
         catcolumns = self.data.select_dtypes(include=['object']).columns.tolist()
