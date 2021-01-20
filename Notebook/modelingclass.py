@@ -41,10 +41,11 @@ class modeling:
 
         else:
             train_startdate = self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index[1]
-            if len(self.storeweeklysales.loc[train_startdate:]) >= 11:
+            if len(self.storeweeklysales.loc[train_startdate:][:-1]) >= 17:
                 train_enddate = len(self.storeweeklysales.loc[train_startdate:]) - 9
                 train = self.storeweeklysales.loc[train_startdate:][:train_enddate]
-                test = self.storeweeklysales.loc[train_startdate:][train_enddate:-1]
+                #test = self.storeweeklysales.loc[train_startdate:][train_enddate:-1]
+                test = self.storeweeklysales[-9:-1]
 
                 arima_model = auto_arima(self.storeweeklysales.loc[train_startdate:test.index[-1]], start_p=0, d=0,
                                          start_q=0,
@@ -109,7 +110,7 @@ class modeling:
 
         else:
             train_startdate = self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index[1]
-            if len(self.storeweeklysales.loc[train_startdate:][:-1]) >= 16:
+            if len(self.storeweeklysales.loc[train_startdate:][:-1]) >= 17:
                 train_enddate = len(self.storeweeklysales.loc[train_startdate:]) - 9
                 train = self.storeweeklysales.loc[train_startdate:][:train_enddate]
                 #test = self.storeweeklysales.loc[train_startdate:][train_enddate:-1]
