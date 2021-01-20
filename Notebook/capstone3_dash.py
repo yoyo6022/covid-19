@@ -49,7 +49,7 @@ app.layout = dbc.Container([
         children=[
             html.Div(
             children=[html.Div(children='Store ID', className='menu-title'),
-            dcc.Dropdown(id='my-dpdn', multi=True, value='',
+            dcc.Dropdown(id='my-dpdn', multi=True, value=[1, 2],
                          options=[{'label':x, 'value':x}
                                   for x in sorted(df['Store'].unique())], style={'width': '100%'}
                          )],),
@@ -76,7 +76,7 @@ app.layout = dbc.Container([
         children=[
             html.Div(
             children=[html.Div(children='Store ID', className='menu-title'),
-            dcc.Dropdown(id='my-dpdn2', multi=True, value='',
+            dcc.Dropdown(id='my-dpdn2', multi=True, value=[1, 2],
                      options=[{'label':x, 'value':x}
                               for x in sorted(df['Store'].unique())], style={'width': '100%'}
                          )],),
@@ -107,7 +107,7 @@ app.layout = dbc.Container([
                 children=[
                     html.Div(
                         children=[html.Div(children='Store ID', className='menu-title'),
-                                  dcc.Dropdown(id='my-dpdn3', multi=True, value='',
+                                  dcc.Dropdown(id='my-dpdn3', multi=True, value=[1, 2],
                                                options=[{'label': x, 'value': x}
                                                         for x in sorted(df['Store'].unique())], style={'width': '100%'}
                                                )], ),
@@ -135,7 +135,7 @@ app.layout = dbc.Container([
                 children=[
                     html.Div(
                         children=[html.Div(children='Store ID', className='menu-title'),
-                                  dcc.Dropdown(id='my-dpdn4', multi=True, value='',
+                                  dcc.Dropdown(id='my-dpdn4', multi=True, value=[1, 2],
                                                options=[{'label': x, 'value': x}
                                                         for x in sorted(df['Store'].unique())], style={'width': '100%'}
                                                )], ),
@@ -159,12 +159,23 @@ app.layout = dbc.Container([
      dbc.Row([
 
         dbc.Col([
-            html.H5("Top 10 AverageDailySales by StoreType:",
+            html.H5("Top 10 AverageDailySales by Store and Assortment Type:",
                    style={"textDecoration": "underline"}),
-            dcc.Dropdown(id='my-dpdn5', multi=False, value='',
+            # dcc.Dropdown(id='my-dpdn5', multi=False, value='',
+            #               options=[{'label':x, 'value':x}
+            #                        for x in sorted(sdf['StoreType'].unique())],
+            #              ),
+
+            dcc.Dropdown(id='my-dpdn5', multi=False, value='StoreType',
+                          options=[{'label':x, 'value':x}
+                                   for x in ['StoreType', 'Assortment']],
+                         ),
+
+            dcc.Dropdown(id='my-dpdn8', multi=False, value='a',
                           options=[{'label':x, 'value':x}
                                    for x in sorted(sdf['StoreType'].unique())],
                          ),
+
             dcc.Graph(id='bar-fig1', figure={}),
         ], width={'size': 6},
            #xs=12, sm=12, md=12, lg=5, xl=5
@@ -172,9 +183,15 @@ app.layout = dbc.Container([
 
 
         dbc.Col([
-            html.H5("Top 10 SpendPerCustomer by StoreType:",
+            html.H5("Top 10 SpendPerCustomer by Store and Assortment Type:",
                    style={"textDecoration": "underline"}),
-            dcc.Dropdown(id='my-dpdn6', multi=False, value='',
+
+            dcc.Dropdown(id='my-dpdn6', multi=False, value='StoreType',
+                          options=[{'label':x, 'value':x}
+                                   for x in ['StoreType', 'Assortment']],
+                         ),
+
+            dcc.Dropdown(id='my-dpdn9', multi=False, value='a',
                           options=[{'label':x, 'value':x}
                                    for x in sorted(sdf['StoreType'].unique())],
                          ),
@@ -189,7 +206,7 @@ app.layout = dbc.Container([
         dbc.Col([
             html.H5("Future 8 Weeks Forecasting:",
                    style={"textDecoration": "underline"}),
-            dcc.Dropdown(id='my-dpdn7', multi=False, value='',
+            dcc.Dropdown(id='my-dpdn7', multi=False, value=1,
                           options=[{'label':x, 'value':x}
                                    for x in sorted(df['Store'].unique())],
                          ),
@@ -278,10 +295,18 @@ def update_graph(storeid, start_date, end_date):
 
 @app.callback(
     Output('bar-fig1', 'figure'),
-    Input('my-dpdn5', 'value')
+    Input('my-dpdn5', 'value'),
+    Input('my-dpdn8', 'value'),
 )
-def update_graph(storetype):
-    sdff = sdf[sdf['StoreType']==storetype].sort_values('AverageDailySales', ascending=False).nlargest(10, 'AverageDailySales')
+# def update_graph(storetype):
+#     sdff = sdf[sdf['StoreType']==storetype].sort_values('AverageDailySales', ascending=False).nlargest(10, 'AverageDailySales')
+#     #figln5 = go.Figure(go.Bar(x=sdff['Sales'], y=sdff['Store'].values.astype('str'),  orientation='h'))
+#     figbar1 = px.bar(x=sdff['AverageDailySales'], y=sdff['Store'].values.astype('str'),
+#                      color=sdff['Store'],
+#                      labels={'y':'Store ID', 'x':'Average Daily Sales'},  orientation='h')
+
+def update_graph(typename, typeoption):
+    sdff = sdf[sdf[typename] == typeoption].sort_values('AverageDailySales', ascending=False).nlargest(10, 'AverageDailySales')
     #figln5 = go.Figure(go.Bar(x=sdff['Sales'], y=sdff['Store'].values.astype('str'),  orientation='h'))
     figbar1 = px.bar(x=sdff['AverageDailySales'], y=sdff['Store'].values.astype('str'),
                      color=sdff['Store'],
@@ -292,10 +317,11 @@ def update_graph(storetype):
 
 @app.callback(
     Output('bar-fig2', 'figure'),
-    Input('my-dpdn6', 'value')
+    Input('my-dpdn6', 'value'),
+    Input('my-dpdn9', 'value'),
 )
-def update_graph(storetype):
-    sdff = sdf[sdf['StoreType']==storetype].sort_values('SalesPerCustomer', ascending=False).nlargest(10, 'SalesPerCustomer')
+def update_graph(typename, typeoption):
+    sdff = sdf[sdf[typename] == typeoption].sort_values('SalesPerCustomer', ascending=False).nlargest(10, 'SalesPerCustomer')
     #figln5 = go.Figure(go.Bar(x=sdff['Sales'], y=sdff['Store'].values.astype('str'),  orientation='h'))
     figbar2 = px.bar(x=sdff['SalesPerCustomer'], y=sdff['Store'].values.astype('str'),
                      color=sdff['Store'],
