@@ -44,9 +44,8 @@ class modeling:
             return pd.DataFrame([mae, WAPE,  self.mae, self.WAPE], index=['MAE_AutoArima', 'WAPE_AutoArima', 'MAE_MeanMethod','WAPE_MeanMethod'], columns=[self.storeid]).T
             #return pd.DataFrame([mae, R2])
 
-        if len(self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index)>=2:
+        if len(self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index)>=2 and len(self.storeweeklysales.loc[self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index[1]:][:-1]) >= 16:
             train_startdate = self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index[1]
-        if  len(self.storeweeklysales.loc[train_startdate:][:-1]) >= 16:
             train_enddate = len(self.storeweeklysales.loc[train_startdate:]) - 9
             train = self.storeweeklysales.loc[train_startdate:][:train_enddate]
             #test = self.storeweeklysales.loc[train_startdate:][train_enddate:-1]
@@ -111,9 +110,8 @@ class modeling:
             forecastresult1['Previous 8 Weeks'] = self.storeweeklysales[-9:-1].values
             return forecastresult1
 
-        if len(self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index)>=2:
+        if len(self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index)>=2 and len(self.storeweeklysales.loc[self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index[1]:][:-1]) >= 16:
             train_startdate = self.storeweeklysales.loc[self.storeweeklysales[(self.storeweeklysales == 0)].index[-1]:].index[1]
-        if  len(self.storeweeklysales.loc[train_startdate:][:-1]) >= 16:
             train_enddate = len(self.storeweeklysales.loc[train_startdate:]) - 9
             train = self.storeweeklysales.loc[train_startdate:][:train_enddate]
             #test = self.storeweeklysales.loc[train_startdate:][train_enddate:-1]
