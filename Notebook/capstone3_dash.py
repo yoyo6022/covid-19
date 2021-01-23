@@ -34,7 +34,7 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],
 app.layout = dbc.Container([
 
     dbc.Row(
-        dbc.Col(html.H1("Rossmann Sales Dashboard",
+        dbc.Col(html.H1("ROSSMANN Sales Dashboard",
                         className='text-center text-primary mb-4'),
                 width=12)
     ),
