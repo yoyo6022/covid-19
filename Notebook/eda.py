@@ -82,21 +82,21 @@ class Sales_EDA:
         plt.ylabel('Weekly Sales', fontsize=15)
         plt.show()
 
-    def topN_daily_violinplot(self, N):
+    def topN_daily_boxplot(self, N):
         plt.figure(figsize=(12, 7))
         N_data = self.data.loc[self.data.Store.isin(self.nlargest_ID(N))]
-        sns.violinplot(x='Sales', y='Store',
+        sns.boxplot(x='Sales', y='Store',
                        data=N_data, order=self.nlargest_ID(N),
                        orient='h')
-        plt.title('Daily Sales of Top10 Stores', fontsize=15)
-        plt.xlabel('Sales', fontsize=15)
+        plt.title(f'Total Sales Top {N}', fontsize=15)
+        plt.xlabel('Daily Sales', fontsize=15)
         plt.ylabel('Store', fontsize=15)
         plt.show()
 
-    def bottomN_daily_violinplot(self, N):
+    def bottomN_daily_boxnplot(self, N):
         plt.figure(figsize=(12, 7))
         b_N_data = self.data.loc[self.data.Store.isin(self.nsmallest_ID(N))]
-        sns.violinplot(x='Sales', y='Store',
+        sns.boxplot(x='Sales', y='Store',
                        data=b_N_data, order=self.nsmallest_ID(N),
                        orient='h')
 
@@ -133,14 +133,14 @@ class sumby:
         plt.title(f'Total {self.aggcol} by {self.groupbycol}', fontsize=15)
         plt.show()
 
-    def topN_barplot(self, N):
+    def topN_barplot(self, N, aggcol):
         bardata = self.get_sum_pct().set_index(self.groupbycol)
         plt.figure(figsize=(12, 7))
-        sns.barplot(y=bardata.Sales.nlargest(N).index,
-                    x=bardata.Sales.nlargest(N).values,
-                    order=bardata.Sales.nlargest(N).index,
+        sns.barplot(y=bardata[aggcol].nlargest(N).index,
+                    x=bardata[aggcol].nlargest(N).values,
+                    order=bardata[aggcol].nlargest(N).index,
                     orient='h')
-        plt.title(f'Total {self.aggcol} of Top {N} Stores', fontsize=15)
+        plt.title(f'{self.aggcol} Top {N}', fontsize=15)
         plt.xlabel(self.aggcol, fontsize=15)
         plt.ylabel(self.groupbycol, fontsize=15)
 
