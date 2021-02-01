@@ -1,10 +1,35 @@
 # Sales Analyzing and Weekly Sales Forecasting for Drug Store Rossmann
 ![cover_photo](./src/cover_photo.jpg)
 # Capstone Project III
-### Problem Statement: 
+1.	[Problem Statement](#1-Problem Statement)
+2.	[Project Objectives](#2-Background)
+3.	[Data Sources](#3-data-sources)
+4.	[Data Wrangling](#4-data-wrangling)
+5.	[Exploratory Data Analysis](#5-exploratory-data-analysis)
+6.	[Assessment Metrics](#6-assessment-metrics)
+7.  [Cross Validation and Testing Strategy](#7-cross-validation-and-testing-strategy)
+8.  [Data Scoping](#8-data-scoping)
+9.	[Feature Selection](#9-feature-selection)
+10. [Feature Engineering](#10-feature-engineering)
+11. [Decomposing the Data](#11-decomposing-the-data)
+12. [Baseline Model](#12-baseline-model)
+13. [Modelling Strategy](#13-modelling-strategy)
+14. [Model Prediction Review & Diagnosis](#14-model-prediction-review-and-diagnosis)
+15. [Selecting The Best Model](#15-selecting-the-best-model)
+16. [Test Data Results](#16-test-data-results)
+17. [Next Steps](#17-next-steps)
+18. [Conclusion](#18-conclusion)
+19. [Tips for Reproducing This Project](#19-tips-for-reproducing-this-project)
+<br/><br/>
+
+
+
+
+
+## 1. Problem Statement
 This project firstly looks into how we can transform the company’s historical sales, promotion, school/state holidays and competitors’ data into business insights. Secondly, we will look into how we can turn these insights into actionable business strategy for the company. On the top of that, we will study how to use the historical sales data to forecast the weekly sales for each Rossmann store with a certain level of accuracy. 
 
-### Background:
+## 2. Background:
 Rossmann operates over 3,000 drug stores in 7 European countries. Currently, Rossmann store managers are tasked with predicting their weekly sales for up to eight weeks in advance. Store sales are influenced by many factors, including promotions, competition, school and state holidays, seasonality, and locality. With thousands of individual managers predicting sales based on their unique circumstances, the accuracy of results can be quite varied. Therefore the company’s data science team is on a new mission to create a unified modeling method for managers to forecast the weekly results with higher accuracy. The management team also required an overall report with feasible strategies for the company to understand the general performance of all stores and to come up with a way to optimize future sales performance. Lastly an individual store performance report needs to be provided to each store manager. 
 
 ### Data Source:
