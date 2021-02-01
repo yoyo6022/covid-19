@@ -4,6 +4,8 @@
 1.	[Problem Statement](#1-problem-statement)
 2.	[Data Sources](#2-data-sources)
 3.	[Reports](#3-reports)
+4.  [Data Wrangling](#4-data-wrangling)
+5.  [EDA](#5-eda)
 <br/><br/>
 
 
@@ -43,3 +45,14 @@ train.csv, store.csv:
 3. [Interactive Dashboard](https://rossmannsalesdash.herokuapp.com/)
 3. [Capstone Project III Final Report]() : 
 4. [Capstone Project III Final Presentation]()
+
+## 4. Data Wrangling
+
+[Data Wrangling1](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/01_DataWrangling%20and%20EDA01_AllStores.ipynb)
+[Data Wrangling2](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/02_DataWrangling%20and%20EDA02_ByStoreType.ipynb)
+
+## 5 EDA:
+### 4.1 The overall distribution 
+<p>
+    <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/total_distribution.png" />
+</p>
