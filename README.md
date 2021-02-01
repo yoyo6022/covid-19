@@ -49,10 +49,24 @@ train.csv, store.csv:
 ## 4. Data Wrangling
 
 [Data Wrangling1](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/01_DataWrangling%20and%20EDA01_AllStores.ipynb)
+<br>
 [Data Wrangling2](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/02_DataWrangling%20and%20EDA02_ByStoreType.ipynb)
 
 ## 5 EDA:
-### 4.1 The overall distribution 
+### 5.1 The overall distribution 
 <p>
     <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/total_distribution.png" />
+</p>
+
+### 5.2 Sales by year
+
+<p>
+    <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/Total%20Sales%20by%20Year.png" />
+</p>
+<p>
+    <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/Average%20Daily%20Sales%20Per%20Store%20by%20Year.png" />
+</p>   
+
+<p>
+    <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/Sales%20Per%20Customer%20by%20Year.png" />
 </p>
