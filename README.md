@@ -4,22 +4,6 @@
 1.	[Problem Statement](#1-problem-statement)
 2.	[Data Sources](#2-data-sources)
 3.	[Reports](#3-reports)
-4.	[Objective](#4-objective)
-5.	[Significance](#5-significance)
-6.	[Reports](#6-reports)
-7.  [Cross Validation and Testing Strategy](#7-cross-validation-and-testing-strategy)
-8.  [Data Scoping](#8-data-scoping)
-9.	[Feature Selection](#9-feature-selection)
-10. [Feature Engineering](#10-feature-engineering)
-11. [Decomposing the Data](#11-decomposing-the-data)
-12. [Baseline Model](#12-baseline-model)
-13. [Modelling Strategy](#13-modelling-strategy)
-14. [Model Prediction Review & Diagnosis](#14-model-prediction-review-and-diagnosis)
-15. [Selecting The Best Model](#15-selecting-the-best-model)
-16. [Test Data Results](#16-test-data-results)
-17. [Next Steps](#17-next-steps)
-18. [Conclusion](#18-conclusion)
-19. [Tips for Reproducing This Project](#19-tips-for-reproducing-this-project)
 <br/><br/>
 
 
