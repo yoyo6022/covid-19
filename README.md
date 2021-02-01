@@ -2,7 +2,7 @@
 ![cover_photo](./src/cover_photo.jpg)
 # Capstone Project III
 1.	[Problem Statement](#1-problem-statement)
-2.	[Data Source](#2-data-sources)
+2.	[Data Sources](#2-data-sources)
 3.	[Reports](#3-reports)
 4.	[Objective](#4-objective)
 5.	[Significance](#5-significance)
@@ -46,14 +46,14 @@ Rossmann operates over 3,000 drug stores in 7 European countries. Currently, Ros
 - In respect of providing individual report to each store manager, we will create an online interactive dashboard for them to track the historical sales related data of their store or of any other stores. Data and graphs will be automated for consistent and automatic delivery on a daily, weekly or monthly basis. Future 8 weeks’ sales forecast for each store will also be provided with 95% confidence interval. By bringing individual store data together in an organization dashboard, we can provide a more integrated and concise view for the sales of each store, ensuring the managers know where their store stand and where the store is based on goals set.
 
 
-## 2. Data Source:
+## 2. Data Sources:
 The datasets used in this study are sourced from https://www.kaggle.com/c/rossmann-store-sales/data and consists of two datasets: 
 train.csv, store.csv:
 - train.csv containing 1,017,209 data samples, is composed of a total of 9 variables collected from 1115 Rossmann stores over 942 days from 01/01/2013 to 07/31/2015, with 7 numerical variables and 2 categorical variables. 
 - store.csv containing 1115 data samples, is composed of a total of 10 variables collected from 1115 Rossmann stores, with 6 numerical variables and 3 categorical variables. 
 
 
-## 3. Reports
+## 3. Reports:
 1. [Capstone Project III Project Proposal](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/report/Yang_Liu_Kunz_Capstone_3_Project%20Proposal.pdf)
 2. [Jupyternotebook](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/tree/master/Notebook)
 3. [Interactive Dashboard](https://rossmannsalesdash.herokuapp.com/)
