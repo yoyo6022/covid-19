@@ -6,6 +6,8 @@
 3.	[Reports](#3-reports)
 4.  [Data Wrangling](#4-data-wrangling)
 5.  [EDA](#5-eda)
+6.  [Modeling](#6-modeling)
+7.  [Modeling Evaluation](#6-model-evaluation)
 <br/><br/>
 
 
@@ -85,3 +87,12 @@ More details of EDA:
 [03_EDA03_ByAssortment.ipynb](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/03_EDA03_ByAssortment.ipynb)<br>
 [04_EDA04_ByPromotions](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/04_EDA04_ByPromotions.ipynb)<br>
 [05_EDA05_Individual Store.ipynb](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/05_EDA05_Individual%20Store.ipynb)<br>
+
+
+## 6. Modeling
+
+[06 Modeling](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/06_Modeling.ipynb)
+
+## 7. Model Evaluation
+
+[07 Model Evaluation](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/07_Model%20Evaluation.ipynb)
