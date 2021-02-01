@@ -61,10 +61,10 @@ train.csv, store.csv:
 ### 5.2 Sales by year
 
 <p float="left">
-  <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/Total%20Sales%20by%20Year.png" width="600" />
+  <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/Total%20Sales%20by%20Year.png" width="500" />
 </p>
 
 <p float="left">
-<img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/AverageDailySalesPerStorebyYear.png" width="400" /> 
-  <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/SalesPerCustomerbyYear.png" width="400" />
+<img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/AverageDailySalesPerStorebyYear.png" width="500" /> 
+  <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/SalesPerCustomerbyYear.png" width="500" />
 </p>
