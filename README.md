@@ -64,9 +64,9 @@ train.csv, store.csv:
     <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/Total%20Sales%20by%20Year.png" />
 </p>
 <p>
-    <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/Average%20Daily%20Sales%20Per%20Store%20by%20Year.png" />
+    <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/AverageDailySalesPerStorebyYear.png" />
 </p>   
 
 <p>
-    <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/Sales%20Per%20Customer%20by%20Year.png" />
+    <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/SalesPerCustomerbyYear.png" />
 </p>
