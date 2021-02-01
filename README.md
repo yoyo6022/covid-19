@@ -73,7 +73,7 @@ train.csv, store.csv:
 
 <p float="left">
     
-<img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/AverageSalesPerstorebymonth.png /> 
+<img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/AverageSalesPerstorebymonth.png" width="500"/> 
     
 <img src="https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/SalesPerCustomerbymonth.png" width="500" />
 </p>
