@@ -53,7 +53,7 @@ train.csv, store.csv:
 - store.csv containing 1115 data samples, is composed of a total of 10 variables collected from 1115 Rossmann stores, with 6 numerical variables and 3 categorical variables. 
 
 
-## 6. Reports
+## 3. Reports
 1. [Capstone Project III Project Proposal](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/report/Yang_Liu_Kunz_Capstone_3_Project%20Proposal.pdf)
 2. [Jupyternotebook](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/tree/master/Notebook)
 3. [Interactive Dashboard](https://rossmannsalesdash.herokuapp.com/)
