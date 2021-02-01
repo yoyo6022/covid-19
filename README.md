@@ -2,9 +2,9 @@
 ![cover_photo](./src/cover_photo.jpg)
 # Capstone Project III
 1.	[Problem Statement](#1-problem-statement)
-2.	[Project Objectives](#2-background)
-3.	[Data Sources](#3-data-sources)
-4.	[Data Wrangling](#4-objective)
+2.	[Background](#2-background)
+3.	[Data Source](#3-data-sources)
+4.	[Objective](#4-objective)
 5.	[Exploratory Data Analysis](#5-significance)
 6.	[Assessment Metrics](#6-reports)
 7.  [Cross Validation and Testing Strategy](#7-cross-validation-and-testing-strategy)
