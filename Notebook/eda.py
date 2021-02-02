@@ -264,7 +264,7 @@ class combined_store_EDA:
 
     def storetype_share_pie(self):
         plt.figure(figsize=(12, 7))
-        self.data.groupby('StoreType')['Sales'].sum().plot(kind='pie', autopct='%.2f%%')
+        self.data.groupby('StoreType')['Sales'].sum().plot(kind='pie', autopct='%.2f%%',textprops={'fontsize': 14})
         plt.title('Sales Share by Store Type', fontsize=15)
         plt.show()
 
