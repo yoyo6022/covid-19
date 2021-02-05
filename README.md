@@ -7,7 +7,7 @@
 4.  [Data Wrangling](#4-data-wrangling)
 5.  [EDA](#5-eda)
 6.  [Modeling](#6-modeling)
-7.  [Modeling Evaluation](#6-model-evaluation)
+7.  [Model Evaluation](#7-model-evaluation)
 <br/><br/>
 
 
@@ -15,7 +15,7 @@
 
 
 ## 1. Problem Statement:
-This project firstly looks into how we can transform the company’s historical sales, promotion, school/state holidays and competitors’ data into business insights. Secondly, we will look into how we can turn these insights into actionable business strategy for the company. On the top of that, we will study how to use the historical sales data to forecast the weekly sales for each Rossmann store with a certain level of accuracy. 
+This project firstly looks into how we can transform the company’s historical sales, promotion, school/state holidays, and competitors’ data into business insights. Secondly, we will look into how we can turn these insights into actionable business strategies for the company. On top of that, we will study how to use the historical sales data to forecast the weekly sales for each Rossmann store with a certain level of accuracy.
 
 ### 1.1. Background:
 Rossmann operates over 3,000 drug stores in 7 European countries. Currently, Rossmann store managers are tasked with predicting their weekly sales for up to eight weeks in advance. Store sales are influenced by many factors, including promotions, competition, school and state holidays, seasonality, and locality. With thousands of individual managers predicting sales based on their unique circumstances, the accuracy of results can be quite varied. Therefore the company’s data science team is on a new mission to create a unified modeling method for managers to forecast the weekly results with higher accuracy. The management team also required an overall report with feasible strategies for the company to understand the general performance of all stores and to come up with a way to optimize future sales performance. Lastly an individual store performance report needs to be provided to each store manager. 
