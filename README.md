@@ -7,7 +7,7 @@
 4.  [Data Wrangling](#4-data-wrangling)
 5.  [EDA](#5-eda)
 6.  [Modeling](#6-modeling)
-7.  [Modeling Evaluation](#6-model-evaluation)
+7.  [Model Evaluation](#6-model-evaluation)
 <br/><br/>
 
 
