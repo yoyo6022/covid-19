@@ -82,7 +82,7 @@ train.csv, store.csv:
 
 More details of EDA:
 
-[01_DataWrangling and EDA01_AllStores.ipynb](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/tree/master/Notebook)<br>
+[01_DataWrangling and EDA01_AllStores.ipynb](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/01_DataWrangling%20and%20EDA01_AllStores.ipynb)<br>
 [02_DataWrangling and EDA02_ByStoreType.ipynb](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/02_DataWrangling%20and%20EDA02_ByStoreType.ipynb)<br>
 [03_EDA03_ByAssortment.ipynb](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/03_EDA03_ByAssortment.ipynb)<br>
 [04_EDA04_ByPromotions](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/04_EDA04_ByPromotions.ipynb)<br>
