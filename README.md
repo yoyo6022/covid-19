@@ -46,7 +46,7 @@ train.csv, store.csv:
 2. [Jupyternotebook](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/tree/master/Notebook)
 3. [Interactive Dashboard](https://rossmannsalesdash.herokuapp.com/)
 3. [Capstone Project III Final Report](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/report/Capstone3%20-%20Final%20Report.pdf) : 
-4. [Capstone Project III Final Presentation]()
+4. [Capstone Project III Final Presentation](Will be availabe soon)
 
 ## 4. Data Wrangling
 
