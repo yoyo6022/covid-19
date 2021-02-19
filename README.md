@@ -38,7 +38,7 @@ Rossmann operates over 3,000 drug stores in 7 European countries. Currently, Ros
 The datasets used in this study are sourced from https://www.kaggle.com/c/rossmann-store-sales/data and consists of two datasets: 
 train.csv, store.csv:
 - train.csv containing 1,017,209 data samples, is composed of a total of 9 variables collected from 1115 Rossmann stores over 942 days from 01/01/2013 to 07/31/2015, with 7 numerical variables and 2 categorical variables. 
-- store.csv containing 1115 data samples, is composed of a total of 10 variables collected from 1115 Rossmann stores, with 6 numerical variables and 3 categorical variables. 
+- store.csv containing 1115 data samples, is composed of a total of 10 variables collected from 1115 Rossmann stores, with 7 numerical variables and 3 categorical variables. 
 
 
 ## 3. Reports:
