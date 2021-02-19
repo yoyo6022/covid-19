@@ -90,7 +90,11 @@ More details of EDA:
 
 
 ## 6. Modeling
+<p>
+<img src = "https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/src/forecasting.GIF" />
+</p>
 
+For more details: 
 [06 Modeling](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/Notebook/06_Modeling.ipynb)
 
 ## 7. Model Evaluation
