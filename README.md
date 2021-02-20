@@ -38,14 +38,14 @@ Rossmann operates over 3,000 drug stores in 7 European countries. Currently, Ros
 The datasets used in this study are sourced from https://www.kaggle.com/c/rossmann-store-sales/data and consists of two datasets: 
 train.csv, store.csv:
 - train.csv containing 1,017,209 data samples, is composed of a total of 9 variables collected from 1115 Rossmann stores over 942 days from 01/01/2013 to 07/31/2015, with 7 numerical variables and 2 categorical variables. 
-- store.csv containing 1115 data samples, is composed of a total of 10 variables collected from 1115 Rossmann stores, with 6 numerical variables and 3 categorical variables. 
+- store.csv containing 1115 data samples, is composed of a total of 10 variables collected from 1115 Rossmann stores, with 7 numerical variables and 3 categorical variables. 
 
 
 ## 3. Reports:
 1. [Capstone Project III Project Proposal](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/report/Yang_Liu_Kunz_Capstone_3_Project%20Proposal.pdf)
 2. [Jupyternotebook](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/tree/master/Notebook)
 3. [Interactive Dashboard](https://rossmannsalesdash.herokuapp.com/)
-3. [Capstone Project III Final Report](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/report/Capstone3%20-%20Final%20Report.pdf) : 
+3. [Capstone Project III Final Report](https://github.com/yoyo6022/Sales-Analyzing-and-Weekly-Sales-Forecasting-for-Drug-Store-Rossmann/blob/master/report/Capstone3_Final%20Repor.pdf) : 
 4. [Capstone Project III Final Presentation](Will be availabe soon)
 
 ## 4. Data Wrangling
