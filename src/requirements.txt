@@ -14,7 +14,7 @@ future==0.18.2
 gunicorn==20.0.4
 herokupackage==0.1.0
 itsdangerous==1.1.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 joblib==1.0.0
 kiwisolver==1.3.1
 MarkupSafe==1.1.1
